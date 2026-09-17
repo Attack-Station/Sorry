@@ -1,0 +1,2640 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I'm Sorry, Adya ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:#0d060c;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+:root{
+    --pink:#ff5c8a;
+    --light:#ffb8ca;
+    --dark:#b91c4c;
+    --purple:#9b5cff;
+    --glass:rgba(255,255,255,.07);
+    --border:rgba(255,255,255,.14);
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at 15% 20%,rgba(255,50,110,.18),transparent 25%),
+    radial-gradient(circle at 85% 30%,rgba(155,92,255,.16),transparent 25%),
+    radial-gradient(circle at 50% 85%,rgba(255,40,90,.12),transparent 30%);
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.025;
+    z-index:100;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#0d060c;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:9999;
+    transition:1s;
+}
+
+.loader.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+.loader-heart{
+    font-size:75px;
+    animation:heartbeat 1s infinite;
+}
+
+.loader p{
+    margin-top:20px;
+    color:var(--light);
+    font-size:17px;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.25);
+    }
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(92%,900px);
+    padding:13px 20px;
+
+    background:rgba(20,5,15,.65);
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+    border-radius:50px;
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+
+    z-index:500;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    opacity:.7;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--light);
+    opacity:1;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    position:relative;
+    padding:100px 20px;
+}
+
+.hero-content{
+    max-width:900px;
+    z-index:2;
+}
+
+.small-title{
+    color:var(--light);
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(65px,13vw,155px);
+    line-height:.9;
+    font-weight:400;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff,
+        #ffabc1,
+        #ff4779
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    margin-top:30px;
+    font-size:clamp(25px,4vw,42px);
+    font-weight:400;
+    color:#ffdae5;
+}
+
+.typewriter{
+    margin:25px auto;
+    min-height:30px;
+    color:#d9c2ca;
+    font-size:18px;
+}
+
+.cursor{
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.btn{
+    border:none;
+    padding:14px 27px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#ff4d79,#c52a60);
+    color:white;
+    box-shadow:0 10px 35px rgba(255,45,99,.3);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+.btn-outline{
+    background:rgba(255,255,255,.06);
+    border:1px solid var(--border);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:rgba(255,255,255,.12);
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.hearts{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    animation:floatHeart linear forwards;
+    opacity:.7;
+}
+
+@keyframes floatHeart{
+
+    to{
+        transform:
+        translateY(-110vh)
+        translateX(var(--move))
+        rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:110px 20px;
+    position:relative;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title span{
+    color:var(--pink);
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.section-title h2{
+    margin-top:12px;
+    font-size:clamp(35px,6vw,65px);
+    font-weight:400;
+}
+
+.section-title p{
+    margin-top:15px;
+    color:#bdaab1;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-wrapper{
+    display:flex;
+    justify-content:center;
+}
+
+.letter{
+    max-width:800px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.09),
+        rgba(255,255,255,.03)
+    );
+
+    border:1px solid var(--border);
+    border-radius:25px;
+
+    padding:clamp(30px,6vw,70px);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 30px 100px rgba(0,0,0,.35);
+}
+
+.letter::before{
+    content:"💌";
+    display:block;
+    font-size:45px;
+    margin-bottom:25px;
+}
+
+.letter h3{
+    font-size:31px;
+    font-weight:400;
+    color:#ffd6e1;
+    margin-bottom:30px;
+}
+
+.letter p{
+    color:#dbc8ce;
+    line-height:2;
+    font-size:17px;
+    margin-bottom:20px;
+}
+
+.signature{
+    color:var(--light);
+    font-size:25px;
+    margin-top:35px;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-box{
+    max-width:700px;
+    margin:auto;
+
+    padding:30px;
+
+    background:var(--glass);
+    border:1px solid var(--border);
+    border-radius:25px;
+
+    backdrop-filter:blur(20px);
+}
+
+.music-info{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.music-disc{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    flex-shrink:0;
+
+    background:
+    radial-gradient(
+        circle,
+        #fff 4px,
+        transparent 5px
+    ),
+    conic-gradient(
+        #ff4d79,
+        #9b5cff,
+        #ff4d79
+    );
+
+    animation:spin 5s linear infinite;
+    animation-play-state:paused;
+}
+
+.music-disc.playing{
+    animation-play-state:running;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.music-text h3{
+    font-size:24px;
+    font-weight:400;
+}
+
+.music-text p{
+    color:#b9a6ad;
+    margin-top:6px;
+}
+
+.music-controls{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:25px;
+}
+
+.music-controls input{
+    flex:1;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+.photo-card{
+    height:380px;
+    overflow:hidden;
+    border-radius:22px;
+    border:1px solid var(--border);
+    cursor:pointer;
+    position:relative;
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+    transition:.7s;
+}
+
+.photo-card:hover img{
+    transform:scale(1.08);
+}
+
+.photo-caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+
+    padding:25px;
+
+    background:
+    linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+
+    color:white;
+}
+
+/* =========================
+   REASONS
+========================= */
+
+.reasons{
+    display:grid;
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.reason{
+    padding:25px;
+    min-height:155px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+
+    transition:.3s;
+}
+
+.reason:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.09);
+}
+
+.reason-number{
+    color:var(--pink);
+    font-size:13px;
+}
+
+.reason h4{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:400;
+}
+
+.reason p{
+    margin-top:8px;
+    color:#a9959d;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    max-width:800px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+
+    background:
+    linear-gradient(
+        #ff4d79,
+        transparent
+    );
+}
+
+.timeline-item{
+    width:50%;
+    padding:20px 35px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    text-align:right;
+    left:0;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-dot{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+
+    background:#ff4d79;
+
+    position:absolute;
+    top:30px;
+
+    box-shadow:
+    0 0 20px #ff4d79;
+}
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+    right:-7px;
+}
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+    left:-7px;
+}
+
+.timeline-card{
+    padding:22px;
+    border-radius:18px;
+
+    background:var(--glass);
+    border:1px solid var(--border);
+}
+
+.timeline-card span{
+    color:var(--pink);
+    font-size:11px;
+}
+
+.timeline-card h3{
+    margin-top:8px;
+    font-weight:400;
+}
+
+.timeline-card p{
+    margin-top:8px;
+    color:#ac99a1;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* =========================
+   PROMISES
+========================= */
+
+.promises{
+    display:grid;
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+}
+
+.promise{
+    text-align:center;
+    padding:35px 25px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.03)
+    );
+
+    border:1px solid var(--border);
+    border-radius:25px;
+}
+
+.promise-icon{
+    font-size:45px;
+}
+
+.promise h3{
+    margin:20px 0 10px;
+    font-weight:400;
+}
+
+.promise p{
+    color:#aa969f;
+    line-height:1.6;
+}
+
+/* =========================
+   FORGIVENESS
+========================= */
+
+.forgive{
+    min-height:650px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.forgive-box{
+    width:min(700px,95%);
+}
+
+.big-heart{
+    font-size:100px;
+    animation:heartbeat 1.5s infinite;
+}
+
+.forgive h2{
+    font-size:
+    clamp(40px,7vw,80px);
+
+    font-weight:400;
+    margin:20px 0;
+}
+
+.forgive p{
+    color:#bcaab2;
+    margin-bottom:35px;
+}
+
+.forgive-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    min-height:60px;
+    position:relative;
+}
+
+#noBtn{
+    position:relative;
+}
+
+/* =========================
+   SURPRISE
+========================= */
+
+.surprise{
+    display:none;
+
+    margin-top:50px;
+    padding:35px;
+
+    border-radius:25px;
+
+    background:rgba(255,60,110,.08);
+    border:1px solid rgba(255,100,140,.4);
+
+    animation:appear .7s ease;
+}
+
+.surprise.show{
+    display:block;
+}
+
+.surprise h3{
+    font-size:36px;
+    font-weight:400;
+    color:#ffb3c7;
+}
+
+.surprise p{
+    margin-top:15px;
+    color:#d4c1c8;
+    line-height:1.7;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:60px 20px;
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+
+    color:#766970;
+}
+
+footer strong{
+    color:#ff91ae;
+}
+
+/* =========================
+   PHOTO MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    z-index:2000;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-content{
+    width:min(900px,95%);
+    position:relative;
+}
+
+.modal-content img{
+    width:100%;
+    max-height:85vh;
+    object-fit:contain;
+    border-radius:15px;
+}
+
+.close-modal{
+    position:absolute;
+
+    right:-10px;
+    top:-10px;
+
+    width:42px;
+    height:42px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#ff4d79;
+    color:white;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+    z-index:5;
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+    top:-30px;
+
+    z-index:3000;
+
+    animation:
+    confettiFall
+    3s linear forwards;
+}
+
+@keyframes confettiFall{
+
+    to{
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+        opacity:0;
+    }
+
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    nav{
+        gap:13px;
+        justify-content:flex-start;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .photo-card{
+        height:420px;
+    }
+
+    .reasons{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .promises{
+        grid-template-columns:1fr;
+    }
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:40px;
+        padding-right:0;
+    }
+
+    .timeline-item:nth-child(odd){
+        text-align:left;
+    }
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+
+    .timeline-item:nth-child(even)
+    .timeline-dot{
+        left:3px;
+        right:auto;
+    }
+
+    .music-controls{
+        flex-wrap:wrap;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .reasons{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .letter{
+        padding:30px 22px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- LOADER -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-heart">
+        ❤️
+    </div>
+
+    <p>
+        Opening something from my heart...
+    </p>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#letter">Letter</a>
+
+    <a href="#music">Music</a>
+
+    <a href="#memories">Memories</a>
+
+    <a href="#reasons">Reasons</a>
+
+    <a href="#timeline">Our Story</a>
+
+    <a href="#promises">Promises</a>
+
+    <a href="#forgive">Forgive Me</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hearts" id="hearts"></div>
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            A little something from my heart
+        </div>
+
+        <h1>
+            I'm Sorry
+        </h1>
+
+        <h2>
+            Adya ❤️
+        </h2>
+
+        <div class="typewriter">
+
+            <span id="typing"></span>
+
+            <span class="cursor">
+                |
+            </span>
+
+        </div>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#letter"
+                class="btn btn-primary"
+            >
+                Read My Heart 💌
+            </a>
+
+            <button
+                class="btn btn-outline"
+                onclick="startExperience()"
+            >
+                Start Our Story 🎵
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section id="letter">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            From my heart
+        </span>
+
+        <h2>
+            A Letter For You
+        </h2>
+
+        <p>
+            Some things should have been said much earlier.
+        </p>
+
+    </div>
+
+
+    <div class="letter-wrapper">
+
+        <div class="letter">
+
+            <h3>
+                Dear Adya,
+            </h3>
+
+            <p>
+                I'm really sorry.
+            </p>
+
+            <p>
+                I've realized that I never valued you as much
+                as you truly deserved, and I didn't understand
+                you the way I should have.
+            </p>
+
+            <p>
+                Looking back, I can see the moments where I
+                could have listened better, understood you
+                better, cared more, and simply been there
+                for you.
+            </p>
+
+            <p>
+                I know that saying "sorry" cannot magically
+                erase everything. I don't want to make excuses.
+                I just want you to know that I understand that
+                my actions affected you.
+            </p>
+
+            <p>
+                You mean a lot to me.
+            </p>
+
+            <p>
+                And if you give me the chance, I don't want to
+                simply promise that I'll change. I want to show
+                you through my actions.
+            </p>
+
+            <p>
+                I want to listen when you speak.
+                I want to understand instead of assuming.
+                I want to appreciate the little things.
+                And I want to make sure that you never feel
+                like you're being taken for granted.
+            </p>
+
+            <p>
+                I'm genuinely sorry for all of it.
+            </p>
+
+            <p>
+                I don't expect you to forget everything instantly.
+                Take whatever time you need.
+            </p>
+
+            <p>
+                I just hope that somewhere in your heart,
+                you can see how sincerely I mean this.
+            </p>
+
+            <div class="signature">
+
+                With all my heart,<br>
+
+                ❤️ Abhishek
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section id="music">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            Our song
+        </span>
+
+        <h2>
+            Press Play 🎵
+        </h2>
+
+        <p>
+            A song for the memories we share.
+        </p>
+
+    </div>
+
+
+    <div class="music-box">
+
+        <div class="music-info">
+
+            <div
+                class="music-disc"
+                id="disc"
+            ></div>
+
+
+            <div class="music-text">
+
+                <h3>
+                    Our Little Song ❤️
+                </h3>
+
+                <p id="songStatus">
+                    This song is for you.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!--
+            YOUR MUSIC FILE
+
+            Put your song here:
+
+            music/our-song.mp3
+        -->
+
+        <audio
+            id="audio"
+            src="music/our-song.mp3"
+            preload="auto"
+        ></audio>
+
+
+        <div class="music-controls">
+
+            <button
+                class="btn btn-primary"
+                id="playBtn"
+                onclick="toggleMusic()"
+            >
+                ▶ Play
+            </button>
+
+
+            <input
+                type="range"
+                id="progress"
+                value="0"
+                min="0"
+                max="100"
+            />
+
+
+            <input
+                type="range"
+                id="volume"
+                value=".7"
+                min="0"
+                max="1"
+                step=".01"
+            />
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- MEMORIES -->
+
+<section id="memories">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            Our moments
+        </span>
+
+        <h2>
+            Little Memories 📸
+        </h2>
+
+        <p>
+            Every picture has a story.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+
+        <!-- PHOTO 1 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo1.jpg')"
+        >
+
+            <img
+                src="photos/photo1.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                One of my favorite memories ❤️
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo2.jpg')"
+        >
+
+            <img
+                src="photos/photo2.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                A moment I'll always remember
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo3.jpg')"
+        >
+
+            <img
+                src="photos/photo3.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                You + Me ❤️
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo4.jpg')"
+        >
+
+            <img
+                src="photos/photo4.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                Another little memory
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 5 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo5.jpg')"
+        >
+
+            <img
+                src="photos/photo5.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                A day worth remembering
+            </div>
+
+        </div>
+
+
+        <!-- PHOTO 6 -->
+
+        <div
+            class="photo-card"
+            onclick="openPhoto('photos/photo6.jpg')"
+        >
+
+            <img
+                src="photos/photo6.jpg"
+                alt="Our memory"
+            >
+
+            <div class="photo-caption">
+                One more reason to smile ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- 28 REASONS -->
+
+<section id="reasons">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            Just because
+        </span>
+
+        <h2>
+            28 Little Things I Love About You ❤️
+        </h2>
+
+        <p>
+            Because 28 reasons still aren't enough.
+        </p>
+
+    </div>
+
+
+    <div
+        class="reasons"
+        id="reasonsGrid"
+    ></div>
+
+</div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section id="timeline">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            Our story
+        </span>
+
+        <h2>
+            A Few Moments
+        </h2>
+
+        <p>
+            Some chapters of our story.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <span>
+                    THE BEGINNING
+                </span>
+
+                <h3>
+                    The day we met
+                </h3>
+
+                <p>
+                    The beginning of something that became
+                    much more important to me than I expected.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <span>
+                    ONE SPECIAL DAY
+                </span>
+
+                <h3>
+                    A memory I'll never forget
+                </h3>
+
+                <p>
+                    From Kolkata to Patna to Bangalore, every journey, every moment, every laugh, and every little memory we shared will always be special to me. I can never forget the beautiful memories we created together. ❤️.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <span>
+                    THE LITTLE THINGS
+                </span>
+
+                <h3>
+                    All the random moments
+                </h3>
+
+                <p>
+                    The calls, laughs, conversations,
+                    food, trips and everything in between.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <span>
+                    TODAY
+                </span>
+
+                <h3>
+                    My apology
+                </h3>
+
+                <p>
+                    I know I made mistakes, and I genuinely
+                    want to do better.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-card">
+
+                <span>
+                    THE FUTURE
+                </span>
+
+                <h3>
+                    What I hope for
+                </h3>
+
+                <p>
+                    More understanding. More laughter.
+                    More memories. Fewer mistakes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- PROMISES -->
+
+<section id="promises">
+
+<div class="container reveal">
+
+    <div class="section-title">
+
+        <span>
+            No empty promises
+        </span>
+
+        <h2>
+            What I Want To Do Better
+        </h2>
+
+    </div>
+
+
+    <div class="promises">
+
+
+        <div class="promise">
+
+            <div class="promise-icon">
+                👂
+            </div>
+
+            <h3>
+                Listen Better
+            </h3>
+
+            <p>
+                I'll listen to understand, not just to reply.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <div class="promise-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Appreciate You
+            </h3>
+
+            <p>
+                I'll never take your presence in my life
+                for granted.
+            </p>
+
+        </div>
+
+
+        <div class="promise">
+
+            <div class="promise-icon">
+                🤝
+            </div>
+
+            <h3>
+                Show It
+            </h3>
+
+            <p>
+                I'll let my actions speak louder than my words.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FORGIVENESS -->
+
+<section
+    id="forgive"
+    class="forgive"
+>
+
+<div class="forgive-box reveal">
+
+    <div class="big-heart">
+        ❤️
+    </div>
+
+    <h2>
+        Can You Forgive Me?
+    </h2>
+
+    <p>
+        I know forgiveness isn't something I can demand.
+        It's something I can only hope for.
+    </p>
+
+
+    <div class="forgive-buttons">
+
+        <button
+            class="btn btn-primary"
+            onclick="forgive()"
+        >
+            Yes ❤️
+        </button>
+
+
+        <button
+            class="btn btn-outline"
+            id="noBtn"
+            onclick="moveNoButton()"
+        >
+            Not Yet 😭
+        </button>
+
+    </div>
+
+
+    <div
+        class="surprise"
+        id="surprise"
+    >
+
+        <h3>
+            Thank You ❤️
+        </h3>
+
+        <p>
+            I promise I'm going to remember this feeling.
+            Not because I want to forget what happened,
+            but because I want to remember how much you
+            mean to me.
+        </p>
+
+        <p>
+            From today onwards, I want my actions to say:
+        </p>
+
+        <p
+            style="
+            font-size:22px;
+            color:#ffb6c9;
+            "
+        >
+            "I choose you.
+            I appreciate you.
+            I understand you.
+            And I will keep trying."
+        </p>
+
+        <p>
+            ❤️ I love you.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    Made with ❤️, regret, and a lot of love.
+
+    <br><br>
+
+    <strong>
+        For Adya
+    </strong>
+
+</footer>
+
+
+<!-- PHOTO MODAL -->
+
+<div
+    class="modal"
+    id="photoModal"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="close-modal"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
+
+        <img
+            id="modalImage"
+            src=""
+            alt="Memory"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   BASIC CONFIGURATION
+===================================================== */
+
+const CONFIG = {
+
+    name:"Adya",
+
+    sender:"Abhishek",
+
+    typingMessages:[
+
+        "I know I made mistakes...",
+
+        "I know I could have understood you better...",
+
+        "I know saying sorry isn't enough...",
+
+        "But I genuinely mean it...",
+
+        "I'm really, really sorry. ❤️"
+
+    ]
+
+};
+
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                document
+                .getElementById("loader")
+                .classList.add("hide");
+
+            },
+            1600
+        );
+
+    }
+);
+
+
+/* =====================================================
+   TYPEWRITER
+===================================================== */
+
+const typingElement =
+document.getElementById("typing");
+
+let messageIndex=0;
+
+let characterIndex=0;
+
+let deleting=false;
+
+
+function typeWriter(){
+
+    const current =
+    CONFIG
+    .typingMessages
+    [messageIndex];
+
+
+    if(!deleting){
+
+        typingElement.textContent =
+        current.substring(
+            0,
+            characterIndex+1
+        );
+
+        characterIndex++;
+
+
+        if(
+            characterIndex ===
+            current.length
+        ){
+
+            deleting=true;
+
+            setTimeout(
+                typeWriter,
+                1800
+            );
+
+            return;
+        }
+
+    }
+
+    else{
+
+        typingElement.textContent =
+        current.substring(
+            0,
+            characterIndex-1
+        );
+
+        characterIndex--;
+
+
+        if(characterIndex===0){
+
+            deleting=false;
+
+            messageIndex=
+            (
+                messageIndex+1
+            )
+            %
+            CONFIG
+            .typingMessages
+            .length;
+
+        }
+
+    }
+
+
+    setTimeout(
+        typeWriter,
+        deleting ? 40 : 75
+    );
+
+}
+
+
+typeWriter();
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+const heartsContainer =
+document.getElementById("hearts");
+
+
+const heartSymbols=[
+
+    "❤️",
+    "💕",
+    "💗",
+    "💖",
+    "💘",
+    "💝"
+
+];
+
+
+function createHeart(){
+
+    const heart=
+    document.createElement("div");
+
+
+    heart.className="heart";
+
+
+    heart.textContent=
+    heartSymbols[
+        Math.floor(
+            Math.random()*
+            heartSymbols.length
+        )
+    ];
+
+
+    heart.style.left=
+    Math.random()*100+"%";
+
+
+    heart.style.fontSize=
+    12+
+    Math.random()*25+
+    "px";
+
+
+    heart.style.animationDuration=
+    5+
+    Math.random()*8+
+    "s";
+
+
+    heart.style.setProperty(
+        "--move",
+        (
+            Math.random()*200-
+            100
+        )+
+        "px"
+    );
+
+
+    heartsContainer
+    .appendChild(heart);
+
+
+    setTimeout(
+        ()=>{
+            heart.remove();
+        },
+        13000
+    );
+
+}
+
+
+setInterval(
+    createHeart,
+    500
+);
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+const audio=
+document.getElementById("audio");
+
+const playBtn=
+document.getElementById("playBtn");
+
+const disc=
+document.getElementById("disc");
+
+const progress=
+document.getElementById("progress");
+
+const volume=
+document.getElementById("volume");
+
+
+audio.volume=.7;
+
+
+function toggleMusic(){
+
+    if(audio.paused){
+
+        audio
+        .play()
+        .then(()=>{
+
+            playBtn.textContent=
+            "⏸ Pause";
+
+            disc
+            .classList
+            .add("playing");
+
+        })
+        .catch(()=>{
+
+            alert(
+                "Please make sure music/our-song.mp3 exists."
+            );
+
+        });
+
+    }
+
+    else{
+
+        audio.pause();
+
+        playBtn.textContent=
+        "▶ Play";
+
+        disc
+        .classList
+        .remove("playing");
+
+    }
+
+}
+
+
+volume.addEventListener(
+    "input",
+    ()=>{
+        audio.volume=
+        volume.value;
+    }
+);
+
+
+audio.addEventListener(
+    "timeupdate",
+    ()=>{
+
+        if(!audio.duration)
+            return;
+
+        progress.value=
+        (
+            audio.currentTime/
+            audio.duration
+        )*100;
+
+    }
+);
+
+
+progress.addEventListener(
+    "input",
+    ()=>{
+
+        if(!audio.duration)
+            return;
+
+        audio.currentTime=
+        (
+            progress.value/
+            100
+        )*
+        audio.duration;
+
+    }
+);
+
+
+audio.addEventListener(
+    "ended",
+    ()=>{
+
+        playBtn.textContent=
+        "▶ Play";
+
+        disc
+        .classList
+        .remove("playing");
+
+        progress.value=0;
+
+    }
+);
+
+
+/* =====================================================
+   START EXPERIENCE
+===================================================== */
+
+function startExperience(){
+
+    document
+    .getElementById("music")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+
+    setTimeout(
+        ()=>{
+
+            toggleMusic();
+
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   28 REASONS
+===================================================== */
+
+const reasons=[
+
+[
+    "Your Smile",
+    "It can completely change my mood."
+],
+
+[
+    "Your Eyes",
+    "There is something about them I can't explain."
+],
+
+[
+    "Your Laugh",
+    "I could listen to it for hours."
+],
+
+[
+    "Your Kindness",
+    "You care more than you realize."
+],
+
+[
+    "Your Voice",
+    "It makes everything feel a little better."
+],
+
+[
+    "Your Patience",
+    "Especially when I'm being difficult."
+],
+
+[
+    "Your Honesty",
+    "You tell me what I need to hear."
+],
+
+[
+    "Your Presence",
+    "Sometimes just having you around is enough."
+],
+
+[
+    "Your Little Habits",
+    "Even the weird ones have become special."
+],
+
+[
+    "Your Messages",
+    "A simple notification from you can make my day."
+],
+
+[
+    "Your Hugs",
+    "They somehow make everything feel okay."
+],
+
+[
+    "Your Support",
+    "You have been there in ways I sometimes fail to appreciate."
+],
+
+[
+    "Your Confidence",
+    "I admire the way you are yourself."
+],
+
+[
+    "Your Heart",
+    "You have so much love inside you."
+],
+
+[
+    "Your Randomness",
+    "Life is more fun because of it."
+],
+
+[
+    "Our Conversations",
+    "I love talking to you about absolutely everything."
+],
+
+[
+    "Your Caring Nature",
+    "You notice little things."
+],
+
+[
+    "Your Strength",
+    "You are stronger than you realize."
+],
+
+[
+    "Your Humor",
+    "You can make me laugh when I don't expect it."
+],
+
+[
+    "Your Trust",
+    "It means more to me than I say."
+],
+
+[
+    "Our Memories",
+    "Some of my favorite moments have you in them."
+],
+
+[
+    "Your Uniqueness",
+    "There is nobody exactly like you."
+],
+
+[
+    "Your Warmth",
+    "You make ordinary moments feel special."
+],
+
+[
+    "Your Understanding",
+    "You often understand what I don't say."
+],
+
+[
+    "Your Love",
+    "It's something I never want to take for granted."
+],
+
+[
+    "Your Little Surprises",
+    "They always stay with me."
+],
+
+[
+    "Simply You",
+    "Because you don't need a reason to be special."
+],
+
+[
+    "Us",
+    "Because our story matters to me."
+]
+
+];
+
+
+const reasonsGrid=
+document.getElementById(
+    "reasonsGrid"
+);
+
+
+reasons.forEach(
+    (reason,index)=>{
+
+        const card=
+        document.createElement(
+            "div"
+        );
+
+
+        card.className="reason";
+
+
+        card.innerHTML=`
+
+            <div class="reason-number">
+                ${String(index+1).padStart(2,"0")}
+            </div>
+
+            <h4>
+                ${reason[0]}
+            </h4>
+
+            <p>
+                ${reason[1]}
+            </p>
+
+        `;
+
+
+        reasonsGrid
+        .appendChild(card);
+
+    }
+);
+
+
+/* =====================================================
+   PHOTO MODAL
+===================================================== */
+
+function openPhoto(src){
+
+    document
+    .getElementById("modalImage")
+    .src=src;
+
+
+    document
+    .getElementById("photoModal")
+    .classList
+    .add("show");
+
+}
+
+
+function closeModal(){
+
+    document
+    .getElementById("photoModal")
+    .classList
+    .remove("show");
+
+}
+
+
+document
+.getElementById("photoModal")
+.addEventListener(
+    "click",
+    function(event){
+
+        if(event.target===this){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   FORGIVENESS
+===================================================== */
+
+function forgive(){
+
+    document
+    .getElementById("surprise")
+    .classList
+    .add("show");
+
+
+    createConfetti();
+
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        setTimeout(
+            createHeart,
+            i*50
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   NO BUTTON
+===================================================== */
+
+function moveNoButton(){
+
+    const button=
+    document.getElementById(
+        "noBtn"
+    );
+
+
+    const x=
+    Math.random()*220-110;
+
+
+    const y=
+    Math.random()*120-60;
+
+
+    button.style.transform=
+    `
+    translate(${x}px,${y}px)
+    `;
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+
+    const symbols=[
+
+        "❤️",
+        "💕",
+        "✨",
+        "🌹",
+        "💖",
+        "🎉"
+
+    ];
+
+
+    for(
+        let i=0;
+        i<120;
+        i++
+    ){
+
+        const piece=
+        document.createElement(
+            "div"
+        );
+
+
+        piece.className=
+        "confetti";
+
+
+        piece.textContent=
+        symbols[
+            Math.floor(
+                Math.random()*
+                symbols.length
+            )
+        ];
+
+
+        piece.style.left=
+        Math.random()*100+
+        "vw";
+
+
+        piece.style.fontSize=
+        10+
+        Math.random()*18+
+        "px";
+
+
+        piece.style.animationDuration=
+        2+
+        Math.random()*3+
+        "s";
+
+
+        document.body
+        .appendChild(piece);
+
+
+        setTimeout(
+            ()=>{
+                piece.remove();
+            },
+            5000
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealObserver=
+new IntersectionObserver(
+
+    entries=>{
+
+        entries.forEach(
+            entry=>{
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry
+                    .target
+                    .classList
+                    .add("visible");
+
+                }
+
+            }
+        );
+
+    },
+
+    {
+        threshold:.15
+    }
+
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+    element=>{
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ESC CLOSE
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(
+            event.key==="Escape"
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
